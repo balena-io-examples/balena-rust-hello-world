@@ -12,4 +12,6 @@ COPY . /usr/src/app
 
 RUN curl -sSf https://static.rust-lang.org/rustup.sh | sh
 
-CMD rustc hello.rs && ./hello
+RUN rustc hello.rs
+
+CMD ./hello	
