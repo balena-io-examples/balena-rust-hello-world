@@ -13,6 +13,6 @@ RUN curl -sSf https://static.rust-lang.org/rustup.sh | sh
 
 COPY . /usr/src/app
 
-RUN cargo build
+RUN cargo build --target=armv7-unknown-linux-gnueabihf
 
-CMD ./target/debug/resin-rust-hello-world
+CMD ./target/armv7-unknown-linux-gnueabihf/debug/resin-rust-hello-world
