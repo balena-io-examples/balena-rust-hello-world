@@ -1,4 +1,4 @@
-before: 'cargo build --target=armv7-unknown-linux-gnueabihf && cp target/armv7-unknown-linux-gnueabihf/debug/resin-rust-hello-world . && rm -r target/'
+before: 'cargo build --target=armv7-unknown-linux-gnueabihf && cp target/armv7-unknown-linux-gnueabihf/debug/resin-rust-hello-world target/debug/resin-rust-hello-world && rm -r target/armv7-unknown-linux-gnueabihf/'
 ignore:
     - .git
 progress: true
