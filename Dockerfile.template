@@ -15,4 +15,4 @@ COPY . /usr/src/app
 
 RUN cargo build
 
-CMD echo "hey"
+CMD ./resin-rust-hello-world
