@@ -13,6 +13,6 @@ RUN curl -sSf https://static.rust-lang.org/rustup.sh | sh
 
 COPY . /usr/src/app
 
-RUN rustc hello.rs
+RUN cargo build
 
-CMD ./hello	
+CMD ./target/debug/resin-rust-hello-world
