@@ -1,0 +1,4 @@
+before: 'rustc --target=armv7-unknown-linux-gnueabihf -C linker=arm-linux-gnueabihf-gcc hello.rs'
+ignore:
+    - .git
+progress: true
