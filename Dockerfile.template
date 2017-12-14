@@ -1,6 +1,7 @@
 FROM resin/%%RESIN_MACHINE_NAME%%-debian
 
 ENV INITSYSTEM on
+ENV PATH "$PATH:/root/.cargo/bin"
 
 RUN apt-get -q update && apt-get install -yq --no-install-recommends \
 	build-essential curl file \
@@ -8,7 +9,7 @@ RUN apt-get -q update && apt-get install -yq --no-install-recommends \
 
 WORKDIR /usr/src/app
 
-RUN curl -sSf https://static.rust-lang.org/rustup.sh | sh
+RUN curl https://sh.rustup.rs -sSf | sh -s -- --no-modify-path -y
 
 COPY . /usr/src/app
 
