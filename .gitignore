@@ -1,1 +1,6 @@
-target/
+**/target/
+**/*.rs.bk
+**/.DS_Store
+Dockerfile
+.resin-sync.yml
+local-push.env

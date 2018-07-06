@@ -1,4 +1,0 @@
-# The target for this file is a Raspberry Pi 3. You will need to update the line below if you are using a different device.
-# Please see https://docs.resin.io/raspberrypi/rust/getting-started/#setting-up-rust-cross-compilation ensuring
-# you choose the correct device type from the dropdown
-before: 'cargo build --target=armv7-unknown-linux-gnueabihf && cp target/armv7-unknown-linux-gnueabihf/debug/resin-rust-hello-world target/debug/resin-rust-hello-world && rm -r target/armv7-unknown-linux-gnueabihf/'

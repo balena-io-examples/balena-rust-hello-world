@@ -1,6 +1,7 @@
 [package]
-name = "resin-rust-hello-world"
-version = "0.1.0"
-authors = ["joe <joe@resin.io>"]
+name = "hello"
+version = "0.2.0"
+authors = ["Zrzka <robert@resin.io>"]
 
 [dependencies]
+clap = "2"
