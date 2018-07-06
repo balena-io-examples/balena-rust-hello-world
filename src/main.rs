@@ -10,7 +10,7 @@ use clap::{App, Arg};
 /// * `value` - command line `NAME` argument value
 fn validate_name(value: String) -> Result<(), String> {
     match value.trim().is_empty() {
-        true => Err("I can't say hallo to empty NAME".to_string()),
+        true => Err("I can't say hello to empty NAME".to_string()),
         false => Ok(()),
     }
 }
