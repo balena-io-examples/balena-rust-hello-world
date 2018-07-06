@@ -8,15 +8,15 @@ code on a device that is supported by [Resin.io](http://resin.io).
 [Dockerfile.template](Dockerfile.template) file builds artifacts in release
 mode with optimizations by default and the final image does not contain
 build tools, Rust toolchain or the application source code. It contains
-application binary only.
+the application binary only.
 
 This sample application depends on the [clap](https://crates.io/crates/clap)
 crate intentionally to demonstrate build artifacts caching.
 
 ## Local push
 
-Set your machine name in the [local-push.env](local-push.env) file. Sample
-value for Raspberry Pi 3 B+ model:
+Set your machine name in the `local-push.env` file. Sample value for
+Raspberry Pi 3 B+ model:
 
 ```bash
 export RESIN_MACHINE_NAME=raspberrypi3
