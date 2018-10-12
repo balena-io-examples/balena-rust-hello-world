@@ -1,0 +1,91 @@
+################################################################################
+# Arguments
+################################################################################
+ARG rust_revision="1.27.0"
+
+################################################################################
+# Base image
+################################################################################
+
+FROM resin/%%RESIN_MACHINE_NAME%%-debian as base
+
+ENV INITSYSTEM=on
+ENV DEBIAN_FRONTEND=noninteractive
+
+################################################################################
+# Rust image
+################################################################################
+
+FROM base as rust
+
+# Install build tools
+RUN apt-get -q update && apt-get install -yq --no-install-recommends build-essential curl file
+
+ENV PATH=/root/.cargo/bin:$PATH
+
+# https://forums.resin.io/t/rustup-fails-for-armv8l/2661
+# -> https://forums.resin.io/t/resin-build-variable-inconsistency/1571/2
+# -> https://github.com/resin-io/docs/issues/739
+#
+# https://github.com/rust-lang-nursery/rustup.rs/issues/1055
+RUN cp `which uname` /bin/uname-orig && echo '#!/bin/bash\nif [[ $1 == "-m" ]]; then echo "armv7l"; else /bin/uname-orig $@; fi;' > `which uname`
+
+# Install specific version of Rust (see ARG)
+RUN curl -sSf https://static.rust-lang.org/rustup.sh | sh -s -- -y --revision=${rust_revision}
+
+################################################################################
+# Dependencies
+################################################################################
+
+FROM rust as dependencies
+
+# Required by `cargo new app`
+ENV USER=root
+
+# Create new fake project
+WORKDIR /build
+RUN cargo new app
+
+# Copy real app dependencies
+COPY Cargo.* /build/app/
+
+# Build fake project with real dependencies
+WORKDIR /build/app
+RUN cargo build --release
+
+################################################################################
+# Builder
+################################################################################
+
+FROM rust as builder
+
+# We do not want to download deps, update registry, ... again
+COPY --from=dependencies /root/.cargo /root/.cargo
+
+# Copy everything, not just source code
+COPY . /build/app
+
+# Update already built deps from dependencies image
+COPY --from=dependencies /build/app/target /build/app/target
+
+# Build real app
+WORKDIR /build/app
+RUN rm -rf target/release/hello*
+RUN cargo build --release
+
+################################################################################
+# Final image
+################################################################################
+
+FROM base
+
+# Copy binary from builder image
+WORKDIR /app
+COPY --from=builder /build/app/target/release/hello .
+
+# Copy other folders required by the application. Example:
+#
+# COPY --from=builder /build/app/assets ./assets
+
+# Launch application
+CMD ["/app/hello", "%%RESIN_MACHINE_NAME%%"]
