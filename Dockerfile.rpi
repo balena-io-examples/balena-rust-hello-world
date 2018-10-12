@@ -23,6 +23,13 @@ RUN apt-get -q update && apt-get install -yq --no-install-recommends build-essen
 
 ENV PATH=/root/.cargo/bin:$PATH
 
+# https://forums.resin.io/t/rustup-fails-for-armv8l/2661
+# -> https://forums.resin.io/t/resin-build-variable-inconsistency/1571/2
+# -> https://github.com/resin-io/docs/issues/739
+#
+# https://github.com/rust-lang-nursery/rustup.rs/issues/1055
+RUN cp `which uname` /bin/uname-orig && echo '#!/bin/bash\nif [[ $1 == "-m" ]]; then echo "armv6l"; else /bin/uname-orig $@; fi;' > `which uname`
+
 # Install specific version of Rust (see ARG)
 RUN curl -sSf https://static.rust-lang.org/rustup.sh | sh -s -- -y --revision=${rust_revision}
 
