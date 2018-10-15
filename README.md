@@ -1,7 +1,7 @@
 # Rust Hello world
 
 This is a very simple project that is an example of how to build and run Rust
-code on a device that is supported by [Resin.io](http://resin.io).
+code on a device that is supported by [balena](https://balena.io).
 
 ## Dockerfile.template
 
@@ -22,7 +22,7 @@ Raspberry Pi 3 B+ model:
 export RESIN_MACHINE_NAME=raspberrypi3
 ```
 
-[List of Resin.io base images](https://docs.resin.io/reference/base-images/resin-base-images/)
+[List of balena base images](https://balena.io/docs/reference/base-images/base-images/)
 in case you have a different device.
 
 Run [local-push.sh](scripts/local-push.sh) script, which:
