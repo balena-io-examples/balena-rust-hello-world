@@ -1,7 +1,7 @@
 ################################################################################
 # Arguments
 ################################################################################
-ARG rust_revision="1.29.1"
+ARG rust_revision="1.29.2"
 
 ################################################################################
 # Base image
@@ -23,6 +23,16 @@ RUN apt-get -q update && apt-get install -yq --no-install-recommends build-essen
 
 ENV PATH=/root/.cargo/bin:$PATH
 
+# Modify `uname -m` for `arm7hf` and `rpi` RESIN_ARCH values:
+# https://forums.resin.io/t/rustup-fails-for-armv8l/2661
+# -> https://forums.resin.io/t/resin-build-variable-inconsistency/1571/2
+# -> https://github.com/resin-io/docs/issues/739
+#
+# https://github.com/rust-lang-nursery/rustup.rs/issues/1055
+WORKDIR /build
+COPY scripts/modify-uname.sh .
+RUN ./modify-uname.sh %%RESIN_ARCH%%
+
 # Install specific version of Rust (see ARG)
 RUN curl -sSf https://static.rust-lang.org/rustup.sh | sh -s -- -y --revision=${rust_revision}
 
@@ -32,19 +42,21 @@ RUN curl -sSf https://static.rust-lang.org/rustup.sh | sh -s -- -y --revision=${
 
 FROM rust as dependencies
 
-# Required by `cargo new app`
-ENV USER=root
-
-# Create new fake project
 WORKDIR /build
-RUN cargo new app
+
+# Create new fake project ($USER is needed by `cargo new`)
+RUN USER=root cargo new app
+
+WORKDIR /build/app
 
 # Copy real app dependencies
-COPY Cargo.* /build/app/
+COPY Cargo.* ./
 
 # Build fake project with real dependencies
-WORKDIR /build/app
 RUN cargo build --release
+
+# Remove the fake app build artifacts
+RUN rm -rf target/release/hello* target/release/deps/hello-*
 
 ################################################################################
 # Builder
@@ -55,15 +67,15 @@ FROM rust as builder
 # We do not want to download deps, update registry, ... again
 COPY --from=dependencies /root/.cargo /root/.cargo
 
+WORKDIR /build/app
+
 # Copy everything, not just source code
-COPY . /build/app
+COPY . .
 
 # Update already built deps from dependencies image
-COPY --from=dependencies /build/app/target /build/app/target
+COPY --from=dependencies /build/app/target target
 
 # Build real app
-WORKDIR /build/app
-RUN rm -rf target/release/hello*
 RUN cargo build --release
 
 ################################################################################
@@ -72,13 +84,13 @@ RUN cargo build --release
 
 FROM base
 
-# Copy binary from builder image
 WORKDIR /app
+
+# Copy binary from builder image
 COPY --from=builder /build/app/target/release/hello .
 
 # Copy other folders required by the application. Example:
-#
-# COPY --from=builder /build/app/assets ./assets
+# COPY --from=builder /build/app/assets assets
 
 # Launch application
-CMD ["/app/hello", "%%RESIN_MACHINE_NAME%%"]
+CMD ["./hello", "%%RESIN_MACHINE_NAME%%"]
