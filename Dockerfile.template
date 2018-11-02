@@ -1,9 +1,4 @@
 ################################################################################
-# Arguments
-################################################################################
-ARG rust_revision="1.29.2"
-
-################################################################################
 # Base image
 ################################################################################
 
@@ -33,8 +28,9 @@ WORKDIR /build
 COPY scripts/modify-uname.sh .
 RUN ./modify-uname.sh %%RESIN_ARCH%%
 
-# Install specific version of Rust (see ARG)
-RUN curl -sSf https://static.rust-lang.org/rustup.sh | sh -s -- -y --revision=${rust_revision}
+# Install rustup downloading the version specified by the standard rust-toolchain file
+COPY rust-toolchain .
+RUN curl https://sh.rustup.rs -sSf | sh -s -- -y --default-toolchain `cat rust-toolchain`
 
 ################################################################################
 # Dependencies
@@ -51,6 +47,8 @@ WORKDIR /build/app
 
 # Copy real app dependencies
 COPY Cargo.* ./
+# Copy the file specifying the Rust version to use
+COPY rust-toolchain ./
 
 # Build fake project with real dependencies
 RUN cargo build --release
