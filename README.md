@@ -1,9 +1,11 @@
-# Rust Hello world
+# Rust on balena - Hello world
 
 This is a very simple project that is an example of how to build and run Rust
 code on a device that is supported by [balena](https://balena.io).
+It showcases using custom Rust version and how to create a multi-staged build process, 
+that results in an app image that does not have compilation tools embedded.
 
-## Dockerfile.template
+## Multi-staged build process; using Dockerfile.template
 
 [Dockerfile.template](Dockerfile.template) file builds artifacts in release
 mode with optimizations by default and the final image does not contain
@@ -13,7 +15,7 @@ the application binary only.
 This sample application depends on the [clap](https://crates.io/crates/clap)
 crate intentionally to demonstrate build artifacts caching.
 
-## Local push
+## How to use balena's local push
 
 Set your machine name in the `local-push.env` file. Sample value for
 Raspberry Pi 3 B+ model:
