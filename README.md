@@ -17,27 +17,4 @@ crate intentionally to demonstrate build artifacts caching.
 
 ## How to use balena's local push
 
-Set your machine name in the `local-push.env` file. Sample value for
-Raspberry Pi 3 B+ model:
-
-```bash
-export BALENA_MACHINE_NAME=raspberrypi3
-```
-
-[List of balena base images](https://balena.io/docs/reference/base-images/base-images/)
-in case you have a different device.
-
-Run [local-push.sh](scripts/local-push.sh) script, which:
-
-* generates `Dockerfile` from `Dockerfile.template`
-    * replaces `%%BALENA_MACHINE_NAME%%` with `raspberrypi3`
-    * replaces `cargo build --release` with `cargo build` (1)
-    * replaces `target/release` with `target/debug` (1)
-* launches `sudo balena local push -s . --force-build "$@"` (2)
-
-(1) `balena local push` does not support build arguments (yet), we have to replace these
-values with `sed`.
-
-(2) `"$@"` allows you to specify device (`local-push.sh 3a2bbb8.local`) or additional
-arguments. You can run this script without arguments and you'll be asked on which device
-to push the application.
+* `balena push $DEVICE_IP -s .`
