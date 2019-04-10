@@ -54,6 +54,9 @@ COPY rust-toolchain ./
 RUN cargo build --release
 
 # Remove the fake app build artifacts
+# NOTE were you to change the hello app name to something with a dash, lets say
+# hello-world, this would become
+# RUN rm -rf target/release/hello-world* target/release/deps/hello_world-*
 RUN rm -rf target/release/hello* target/release/deps/hello-*
 
 ################################################################################
