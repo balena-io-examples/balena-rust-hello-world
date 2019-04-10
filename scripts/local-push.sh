@@ -26,10 +26,10 @@ fi
 
 . "${SETTINGS_FILE}"
 
-echo "Generating Dockerfile for ${RESIN_MACHINE_NAME}..."
-sed "s/%%RESIN_MACHINE_NAME%%/${RESIN_MACHINE_NAME}/g; s/cargo build --release/cargo build/g; s/target\/release/target\/debug/g" "${DOCKERFILE_TEMPLATE}" > "${DOCKERFILE}"
+echo "Generating Dockerfile for ${BALENA_MACHINE_NAME}..."
+sed "s/%%BALENA_MACHINE_NAME%%/${BALENA_MACHINE_NAME}/g; s/cargo build --release/cargo build/g; s/target\/release/target\/debug/g" "${DOCKERFILE_TEMPLATE}" > "${DOCKERFILE}"
 
 echo "Building application..."
-sudo resin local push -s . \
+sudo balena local push -s . \
     --force-build \
     "$@"

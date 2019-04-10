@@ -21,7 +21,7 @@ Set your machine name in the `local-push.env` file. Sample value for
 Raspberry Pi 3 B+ model:
 
 ```bash
-export RESIN_MACHINE_NAME=raspberrypi3
+export BALENA_MACHINE_NAME=raspberrypi3
 ```
 
 [List of balena base images](https://balena.io/docs/reference/base-images/base-images/)
@@ -35,7 +35,7 @@ Run [local-push.sh](scripts/local-push.sh) script, which:
     * replaces `target/release` with `target/debug` (1)
 * launches `sudo balena local push -s . --force-build "$@"` (2)
 
-(1) `resin local push` does not support build arguments (yet), we have to replace these
+(1) `balena local push` does not support build arguments (yet), we have to replace these
 values with `sed`.
 
 (2) `"$@"` allows you to specify device (`local-push.sh 3a2bbb8.local`) or additional
