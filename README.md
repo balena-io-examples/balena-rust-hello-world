@@ -30,10 +30,10 @@ in case you have a different device.
 Run [local-push.sh](scripts/local-push.sh) script, which:
 
 * generates `Dockerfile` from `Dockerfile.template`
-    * replaces `%%RESIN_MACHINE_NAME%%` with `raspberrypi3`
+    * replaces `%%BALENA_MACHINE_NAME%%` with `raspberrypi3`
     * replaces `cargo build --release` with `cargo build` (1)
     * replaces `target/release` with `target/debug` (1)
-* launches `sudo resin local push -s . --force-build "$@"` (2)
+* launches `sudo balena local push -s . --force-build "$@"` (2)
 
 (1) `resin local push` does not support build arguments (yet), we have to replace these
 values with `sed`.

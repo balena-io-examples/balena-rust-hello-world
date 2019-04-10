@@ -2,7 +2,7 @@
 # Base image
 ################################################################################
 
-FROM resin/%%RESIN_MACHINE_NAME%%-debian as base
+FROM balenalib/%%BALENA_MACHINE_NAME%%-debian as base
 
 ENV INITSYSTEM=on
 ENV DEBIAN_FRONTEND=noninteractive
