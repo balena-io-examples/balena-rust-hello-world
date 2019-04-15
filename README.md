@@ -1,9 +1,10 @@
-# Rust on balena - Hello world
+# Rust on balena - Hello world!
 
 This is a very simple project that is an example of how to build and run Rust
 code on a device that is supported by [balena](https://balena.io).
-It showcases using custom Rust version pinning (via the [standard `rust-toolchain` file](https://github.com/rust-lang-nursery/rustup.rs#the-toolchain-file)) and how to create a multi-staged build process, 
-that results in an app image that does not have compilation tools embedded.
+It showcases using custom Rust version pinning (via the [standard `rust-toolchain` file](https://github.com/rust-lang-nursery/rustup.rs#the-toolchain-file))
+and how to create a multi-staged build process,  that results in an app image
+that does not have compilation tools embedded.
 
 ## Multi-staged build process; using Dockerfile.template
 
@@ -15,6 +16,15 @@ the application binary only.
 This sample application depends on the [clap](https://crates.io/crates/clap)
 crate intentionally to demonstrate build artifacts caching.
 
-## How to use balena's local push
+## Push to a device
 
-* `balena push $DEVICE_IP -s .`
+Start an image build on a local-mode balena device:
+
+```sh
+balena push $DEVICE_IP -s .
+```
+
+## Documentation
+
+* [`balena push` command](https://www.balena.io/docs/reference/cli/#push-applicationordevice)
+* [Develop locally](https://www.balena.io/docs/learn/develop/local-mode/)
