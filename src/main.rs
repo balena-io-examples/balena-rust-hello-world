@@ -9,4 +9,9 @@ fn main() {
         .get_matches();
 
     println!("Hello, {}!", matches.value_of("name").unwrap());
+
+    // Infinite loop - otherwise the application will quit and the container
+    // will be launched again and again and your logs will be flooded with
+    // the "Hello, {}!" messages.
+    loop {}
 }
