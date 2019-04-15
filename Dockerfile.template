@@ -18,9 +18,8 @@ RUN apt-get -q update && apt-get install -yq --no-install-recommends build-essen
 
 ENV PATH=/root/.cargo/bin:$PATH
 
-# Install rustup downloading the version specified by the standard rust-toolchain file
-COPY rust-toolchain .
-RUN curl https://sh.rustup.rs -sSf | sh -s -- -y --default-toolchain `cat rust-toolchain`
+# Install Rust
+RUN curl https://sh.rustup.rs -sSf | sh -s -- -y
 
 ################################################################################
 # Dependencies
@@ -37,8 +36,6 @@ WORKDIR /build/app
 
 # Copy real app dependencies
 COPY Cargo.* ./
-# Copy the file specifying the Rust version to use
-COPY rust-toolchain ./
 
 # Build fake project with real dependencies
 RUN cargo build --release
