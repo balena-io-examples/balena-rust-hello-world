@@ -44,6 +44,12 @@ COPY rust-toolchain ./
 RUN cargo build --release
 
 # Remove the fake app build artifacts
+#
+# NOTE If your application name contains `-` (`foo-bar` for example)
+# then the correct command to remove build artifacts looks like:
+#
+# RUN rm -rf target/release/foo-bar target/release/deps/foo_bar-*
+#                              ^                           ^
 RUN rm -rf target/release/hello* target/release/deps/hello-*
 
 ################################################################################
