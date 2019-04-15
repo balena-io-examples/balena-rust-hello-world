@@ -13,5 +13,7 @@ fn main() {
     // Infinite loop - otherwise the application will quit and the container
     // will be launched again and again and your logs will be flooded with
     // the "Hello, {}!" messages.
-    loop {}
+    loop {
+        std::thread::sleep(std::time::Duration::new(10, 0));
+    }
 }
