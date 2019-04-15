@@ -18,16 +18,6 @@ RUN apt-get -q update && apt-get install -yq --no-install-recommends build-essen
 
 ENV PATH=/root/.cargo/bin:$PATH
 
-# Modify `uname -m` for `arm7hf` and `rpi` BALENA_ARCH values:
-# https://forums.balena.io/t/rustup-fails-for-armv8l/2661
-# -> https://forums.balena.io/t/resin-build-variable-inconsistency/1571/2
-# -> https://github.com/balena-io/docs/issues/739
-#
-# https://github.com/rust-lang-nursery/rustup.rs/issues/1055
-WORKDIR /build
-COPY scripts/modify-uname.sh .
-RUN ./modify-uname.sh %%BALENA_ARCH%%
-
 # Install rustup downloading the version specified by the standard rust-toolchain file
 COPY rust-toolchain .
 RUN curl https://sh.rustup.rs -sSf | sh -s -- -y --default-toolchain `cat rust-toolchain`
