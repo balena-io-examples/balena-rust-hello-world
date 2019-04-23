@@ -3,4 +3,4 @@
 **/.DS_Store
 Dockerfile
 .resin-sync.yml
-local-push.env
+**/.idea/
