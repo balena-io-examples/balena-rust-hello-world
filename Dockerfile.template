@@ -16,6 +16,10 @@ FROM base as rust
 # Install build tools
 RUN apt-get -q update && apt-get install -yq --no-install-recommends build-essential curl file
 
+# https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=923479
+# https://github.com/balena-io-library/base-images/issues/562
+RUN c_rehash
+
 ENV PATH=/root/.cargo/bin:$PATH
 
 # Install Rust
