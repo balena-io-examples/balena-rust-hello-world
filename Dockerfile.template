@@ -14,7 +14,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 FROM base as rust
 
 # Install build tools
-RUN apt-get -q update && apt-get install -yq --no-install-recommends build-essential curl file
+RUN apt-get -q update && apt-get install -yq --no-install-recommends build-essential wget file && apt-get remove curl
 
 ENV PATH=/root/.cargo/bin:$PATH
 
@@ -30,7 +30,7 @@ RUN ./modify-uname.sh %%RESIN_ARCH%%
 
 # Install rustup downloading the version specified by the standard rust-toolchain file
 COPY rust-toolchain .
-RUN curl https://sh.rustup.rs -sSf | sh -s -- -y --default-toolchain `cat rust-toolchain`
+RUN wget --no-verbose --secure-protocol=TLSv1_2 -qO- https://sh.rustup.rs | sh -s -- -y --default-toolchain `cat rust-toolchain`
 
 ################################################################################
 # Dependencies
