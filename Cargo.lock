@@ -39,7 +39,7 @@ dependencies = [
 
 [[package]]
 name = "hello"
-version = "0.1.3"
+version = "0.1.4"
 dependencies = [
  "clap 2.32.0 (registry+https://github.com/rust-lang/crates.io-index)",
 ]
