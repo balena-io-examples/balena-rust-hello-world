@@ -8,12 +8,11 @@ fn main() {
         .arg(Arg::with_name("name").index(1).required(true))
         .get_matches();
 
-    println!("Hello, {}!", matches.value_of("name").unwrap());
-
     // Infinite loop - otherwise the application will quit and the container
     // will be launched again and again and your logs will be flooded with
     // the "Hello, {}!" messages.
     loop {
+        println!("Hello, {}!", matches.value_of("name").unwrap());
         std::thread::sleep(std::time::Duration::new(10, 0));
     }
 }
