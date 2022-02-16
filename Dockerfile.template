@@ -6,22 +6,20 @@ RUN USER=root cargo new --bin balena-rust-hello-world
 WORKDIR /usr/src/balena-rust-hello-world
 
 # 2. Copy our manifests
-COPY ./Cargo.lock ./Cargo.lock
-COPY ./Cargo.toml ./Cargo.toml
+COPY ./Cargo.* .
+RUN mkdir ./src && echo 'fn main() { println!("Dummy!"); }' > ./src/main.rs
 
 # 3. Build only the dependencies to cache them
-RUN cargo build --release
-RUN rm src/*.rs
+RUN cargo build --release && rm src/*.rs
 
 # 4. Now that the dependency is built, copy your source code
 COPY ./src ./src
 
 # 5. Build for release.
-RUN rm ./target/release/deps/holodeck*
 RUN cargo build --release
 
 # 6. Chain builds for optimization
-FROM balenalib/%%BALENA_MACHINE_NAME%%-debian:buster-slim
+FROM balenalib/%%BALENA_MACHINE_NAME%%-debian:buster-run
 
 # 7. Copy the binary
 COPY --from=builder /usr/src/balena-rust-hello-world/target/release/balena-rust-hello-world .
@@ -30,4 +28,4 @@ COPY --from=builder /usr/src/balena-rust-hello-world/target/release/balena-rust-
 COPY views/ .
 
 # 9. Run the server
-CMD [ "balena-rust-hello-world" ]
+CMD [ "./balena-rust-hello-world" ]
