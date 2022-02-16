@@ -1,13 +1,33 @@
+# Rust as the base image
 FROM rust:1.58-slim-buster as builder
 
+# 1. Create a new empty shell project
+RUN USER=root cargo new --bin balena-rust-hello-world
 WORKDIR /usr/src/balena-rust-hello-world
 
-COPY . .
+# 2. Copy our manifests
+COPY ./Cargo.lock ./Cargo.lock
+COPY ./Cargo.toml ./Cargo.toml
 
-RUN cargo install --path .
+# 3. Build only the dependencies to cache them
+RUN cargo build --release
+RUN rm src/*.rs
 
-FROM balenalib/%%BALENA_MACHINE_NAME%%-alpine:3.14
+# 4. Now that the dependency is built, copy your source code
+COPY ./src ./src
 
-COPY --from=builder /usr/local/cargo/bin/balena-rust-hello-world /usr/local/bin/balena-rust-hello-world
+# 5. Build for release.
+RUN rm ./target/release/deps/holodeck*
+RUN cargo build --release
 
+# 6. Chain builds for optimization
+FROM balenalib/%%BALENA_MACHINE_NAME%%-debian:buster-slim
+
+# 7. Copy the binary
+COPY --from=builder /usr/src/balena-rust-hello-world/target/release/balena-rust-hello-world .
+
+# 8. Copy the static files for the server
+COPY views/ .
+
+# 9. Run the server
 CMD [ "balena-rust-hello-world" ]
