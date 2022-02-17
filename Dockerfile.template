@@ -14,6 +14,7 @@ RUN cargo build --release && rm src/*.rs
 
 # 4. Now that the dependency is built, copy your source code
 COPY ./src ./src
+RUN touch -a -m ./src/main.rs
 
 # 5. Build for release.
 RUN cargo build --release
@@ -21,11 +22,13 @@ RUN cargo build --release
 # 6. Chain builds for optimization
 FROM balenalib/%%BALENA_MACHINE_NAME%%-debian:buster-run
 
+WORKDIR /usr/src/balena-rust-hello-world
+
 # 7. Copy the binary
 COPY --from=builder /usr/src/balena-rust-hello-world/target/release/balena-rust-hello-world .
 
 # 8. Copy the static files for the server
-COPY views/ .
+COPY views/ ./
 
 # 9. Run the server
 CMD [ "./balena-rust-hello-world" ]
