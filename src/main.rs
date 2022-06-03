@@ -11,6 +11,6 @@ async fn main() {
 
     let public = warp::path("public").and(warp::fs::dir("./views/public"));
     let routes = index.or(public);
-    println!("Listenning for requests on port {}", port);
+    println!("Listening for requests on port {}", port);
     warp::serve(routes).run(([0, 0, 0, 0], port)).await;
 }

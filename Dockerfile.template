@@ -17,7 +17,7 @@ COPY ./src ./src
 RUN touch -a -m ./src/main.rs
 
 # 5. Build for release.
-RUN cargo build --release
+RUN cargo build --release --target-dir .
 
 # 6. Chain builds for optimization
 FROM balenalib/%%BALENA_MACHINE_NAME%%-debian:buster-run
@@ -25,10 +25,10 @@ FROM balenalib/%%BALENA_MACHINE_NAME%%-debian:buster-run
 WORKDIR /usr/src/balena-rust-hello-world
 
 # 7. Copy the binary
-COPY --from=builder /usr/src/balena-rust-hello-world/target/release/balena-rust-hello-world .
+COPY --from=builder /usr/src/balena-rust-hello-world/release/ ./release
 
 # 8. Copy the static files for the server
-COPY views/ ./
+COPY views/ ./views
 
 # 9. Run the server
-CMD [ "./balena-rust-hello-world" ]
+CMD [ "./release/balena-rust-hello-world" ]
