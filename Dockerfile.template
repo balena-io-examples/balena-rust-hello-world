@@ -1,90 +1,34 @@
-################################################################################
-# Base image
-################################################################################
+# Rust as the base image
+FROM rust:1.58-slim-buster as builder
 
-FROM balenalib/%%BALENA_MACHINE_NAME%%-debian as base
+# 1. Create a new empty shell project
+RUN USER=root cargo new --bin balena-rust-hello-world
+WORKDIR /usr/src/balena-rust-hello-world
 
-ENV DEBIAN_FRONTEND=noninteractive
+# 2. Copy our manifests
+COPY ./Cargo.* .
+RUN mkdir ./src && echo 'fn main() { println!("Dummy!"); }' > ./src/main.rs
 
-################################################################################
-# Rust image
-################################################################################
+# 3. Build only the dependencies to cache them
+RUN cargo build --release && rm src/*.rs
 
-FROM base as rust
+# 4. Now that the dependency is built, copy your source code
+COPY ./src ./src
+RUN touch -a -m ./src/main.rs
 
-# Install build tools
-RUN apt-get -q update && apt-get install -yq --no-install-recommends build-essential curl file
+# 5. Build for release.
+RUN cargo build --release --target-dir .
 
-# https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=923479
-# https://github.com/balena-io-library/base-images/issues/562
-RUN c_rehash
+# 6. Chain builds for optimization
+FROM balenalib/%%BALENA_MACHINE_NAME%%-debian:buster-run
 
-ENV PATH=/root/.cargo/bin:$PATH
+WORKDIR /usr/src/balena-rust-hello-world
 
-# Install Rust
-RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- --default-toolchain 1.37.0 -y
+# 7. Copy the binary
+COPY --from=builder /usr/src/balena-rust-hello-world/release/ ./release
 
-################################################################################
-# Dependencies
-################################################################################
+# 8. Copy the static files for the server
+COPY views/ ./views
 
-FROM rust as dependencies
-
-WORKDIR /build
-
-# Create new fake project ($USER is needed by `cargo new`)
-RUN USER=root cargo new app
-
-WORKDIR /build/app
-
-# Copy real app dependencies
-COPY Cargo.* ./
-
-# Build fake project with real dependencies
-RUN cargo build --release
-
-# Remove the fake app build artifacts
-#
-# NOTE If your application name contains `-` (`foo-bar` for example)
-# then the correct command to remove build artifacts looks like:
-#
-# RUN rm -rf target/release/foo-bar target/release/deps/foo_bar-*
-#                              ^                           ^
-RUN rm -rf target/release/hello* target/release/deps/hello-*
-
-################################################################################
-# Builder
-################################################################################
-
-FROM rust as builder
-
-# We do not want to download deps, update registry, ... again
-COPY --from=dependencies /root/.cargo /root/.cargo
-
-WORKDIR /build/app
-
-# Copy everything, not just source code
-COPY . .
-
-# Update already built deps from dependencies image
-COPY --from=dependencies /build/app/target target
-
-# Build real app
-RUN cargo build --release
-
-################################################################################
-# Final image
-################################################################################
-
-FROM base
-
-WORKDIR /app
-
-# Copy binary from builder image
-COPY --from=builder /build/app/target/release/hello .
-
-# Copy other folders required by the application. Example:
-# COPY --from=builder /build/app/assets assets
-
-# Launch application
-CMD ["./hello", "%%BALENA_MACHINE_NAME%%"]
+# 9. Run the server
+CMD [ "./release/balena-rust-hello-world" ]

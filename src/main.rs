@@ -1,19 +1,16 @@
-use clap::{crate_authors, crate_description, crate_name, crate_version, App, Arg};
+#![deny(warnings)]
+use warp::Filter;
 
-fn main() {
-    let matches = App::new(crate_name!())
-        .author(crate_authors!())
-        .version(crate_version!())
-        .about(crate_description!())
-        .arg(Arg::with_name("name").index(1).required(true))
-        .get_matches();
+#[tokio::main]
+async fn main() {
+    let port = 80;
 
-    println!("Hello, {}!", matches.value_of("name").unwrap());
+    let index = warp::get()
+        .and(warp::path::end())
+        .and(warp::fs::file("./views/index.html"));
 
-    // Infinite loop - otherwise the application will quit and the container
-    // will be launched again and again and your logs will be flooded with
-    // the "Hello, {}!" messages.
-    loop {
-        std::thread::sleep(std::time::Duration::new(10, 0));
-    }
+    let public = warp::path("public").and(warp::fs::dir("./views/public"));
+    let routes = index.or(public);
+    println!("Listening for requests on port {}", port);
+    warp::serve(routes).run(([0, 0, 0, 0], port)).await;
 }
