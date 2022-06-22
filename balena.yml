@@ -25,3 +25,4 @@ data:
     - fincm3
     - beaglebone-black
     - jetson-tx2
+version: 1.0.1
