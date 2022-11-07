@@ -1,0 +1,600 @@
+- commits:
+    - subject: "patch: replace balenaCI with flowzone"
+      hash: 141d610a871cde215256c4f0453c1e9808ceddb9
+      body: ""
+      footer:
+        Signed-off-by: Vipul Gupta (@vipulgupta2048) <vipul@balena.io>
+        signed-off-by: Vipul Gupta (@vipulgupta2048) <vipul@balena.io>
+      author: Vipul Gupta (@vipulgupta2048)
+      nested: []
+  version: 1.0.2
+  title: ""
+  date: 2022-11-07T12:11:21.176Z
+- version: 1.0.1
+  date: 2022-06-22T13:25:08Z
+  commits:
+    - hash: 2c6a7ad18c4bc2cd9ce2edcb677aa322b6481ea1
+      author: Vipul Gupta (@vipulgupta2048)
+      footers:
+        signed-off-by: Vipul Gupta (@vipulgupta2048) <vipul@balena.io>
+      subject: "patch: Convert balenaHub fleet to app"
+      body: null
+    - hash: 695b67aa8241838712f4e43462fa9d9a1402ffac
+      author: Vipul Gupta (@vipulgupta2048)
+      footers:
+        signed-off-by: Vipul Gupta (@vipulgupta2048) <vipul@balena.io>
+      subject: "patch: Add logo for balenaHub"
+      body: null
+- version: 1.0.0
+- date: 2022-06-06T13:36:01Z
+- commits:
+    - hash: 834b782143a8c17b4404ddc9613d856cd6613e82
+- commits:
+    - author: Vipul Gupta (@vipulgupta2048)
+- commits:
+    - footers:
+        signed-off-by: Vipul Gupta (@vipulgupta2048) <vipul@balena.io>
+- commits:
+    - subject: "major: Upgrade Getting Started experience for rust"
+- commits:
+    - body: null
+- commits:
+    - hash: 50ffc53f3a4aca30ebb89a10590b99f8a7b9bd41
+- commits:
+    - author: Vipul Gupta (@vipulgupta2048)
+- commits:
+    - footers:
+        signed-off-by: Vipul Gupta (@vipulgupta2048) <vipul@balena.io>
+- commits:
+    - subject: Add dockerignore
+- commits:
+    - body: null
+- commits:
+    - hash: fe819d3efc73896117c31f615d492c428e6ab66a
+- commits:
+    - author: Vipul Gupta (@vipulgupta2048)
+- commits:
+    - footers:
+        signed-off-by: Vipul Gupta (@vipulgupta2048) <vipul@balena.io>
+- commits:
+    - subject: Document dockerfile
+- commits:
+    - body: null
+- commits:
+    - hash: 6d6fd86273f0d3dbae552c1e2b2a96a7f4c4ff3a
+- commits:
+    - author: Vipul Gupta (@vipulgupta2048)
+- commits:
+    - footers:
+        signed-off-by: Vipul Gupta (@vipulgupta2048) <vipul@balena.io>
+- commits:
+    - subject: Listen on all interfaces in Docker
+- commits:
+    - body: null
+- commits:
+    - hash: abe9a4e75ab4420514ca571385bcf79c96bd053e
+- commits:
+    - author: Vipul Gupta (@vipulgupta2048)
+- commits:
+    - footers:
+        signed-off-by: Vipul Gupta (@vipulgupta2048) <vipul@balena.io>
+- commits:
+    - subject: Add README and balena.yml
+- commits:
+    - body: null
+- commits:
+    - hash: 8cd04b563729281381d8f8ca1df1568173e7b1a6
+- commits:
+    - author: Vipul Gupta (@vipulgupta2048)
+- commits:
+    - footers:
+        signed-off-by: Vipul Gupta (@vipulgupta2048) <vipul@balena.io>
+- commits:
+    - subject: Add License
+- commits:
+    - body: null
+- version: 0.1.6
+- date: 2019-10-03T12:09:55Z
+- commits:
+    - hash: 985068e4e5edf91f7a5d0551bb00d2805a6bf013
+- commits:
+    - author: Zahari Petkov
+- commits:
+    - footers:
+        change-type: patch
+- commits:
+    - footers:
+        signed-off-by: Zahari Petkov <zahari@balena.io>
+- commits:
+    - subject: Pin compiler version to 1.37.0
+- commits:
+    - body: |-
+        Rust 1.38.0 [1] segfaults during compilation on ARMv7. Until this is
+        fixed in a new compiler release, pin the compiler version.
+        [1] https://github.com/rust-lang/rust/issues/62896
+- version: 0.1.5
+- date: 2019-08-01T10:04:43Z
+- commits:
+    - hash: a93ace70267809e3c5f4946f9ccaaed09941124e
+- commits:
+    - author: Robert Vojta
+- commits:
+    - footers:
+        change-type: patch
+- commits:
+    - footers:
+        signed-off-by: Robert Vojta <robert@balena.io>
+- commits:
+    - subject: Remove INITSYSTEM=on
+- commits:
+    - body: It’s no longer supported.
+- version: 0.1.4
+- date: 2019-07-15T18:12:07Z
+- commits:
+    - hash: dc4b9e05e78dc6564397e454743eab97062cb567
+- commits:
+    - author: Robert Vojta
+- commits:
+    - footers:
+        change-type: patch
+- commits:
+    - footers:
+        signed-off-by: Robert Vojta <robert@balena.io>
+- commits:
+    - subject: Force HTTPS & TLS 1.2 when installing Rust
+- commits:
+    - body: Copy & paste from the rustup.rs site.
+- commits:
+    - hash: d7e646bcb3d7509336c80c13015c356894597125
+- commits:
+    - author: Robert Vojta
+- commits:
+    - footers:
+        change-type: patch
+- commits:
+    - footers:
+        signed-off-by: Robert Vojta <robert@balena.io>
+- commits:
+    - subject: Rehash certificates
+- commits:
+    - body: null
+- version: 0.1.3
+- date: 2019-04-23T09:01:39Z
+- commits:
+    - hash: dc2c52759261b8925885466543d3e2d8576694e1
+- commits:
+    - author: Robert Vojta
+- commits:
+    - footers:
+        signed-off-by: Robert Vojta <robert@balena.io>
+- commits:
+    - subject: Update Rust to 1.33.0
+- commits:
+    - body: null
+- commits:
+    - hash: 665f2a6eb147867594d45c3f5c0e5c0d7525a4f3
+- commits:
+    - author: Robert Vojta
+- commits:
+    - footers:
+        change-type: patch
+- commits:
+    - footers:
+        signed-off-by: Robert Vojta <robert@balena.io>
+- commits:
+    - subject: Update base image to balenalib
+- commits:
+    - body: null
+- commits:
+    - hash: 02f3f2d36c43d06b0e693f69996747fb9bea852a
+- commits:
+    - author: Robert Vojta
+- commits:
+    - footers:
+        signed-off-by: Robert Vojta <robert@balena.io>
+- commits:
+    - subject: Rename resin to balena
+- commits:
+    - body: null
+- commits:
+    - hash: 371613c9faa509a1da89c342053eafa9597310cd
+- commits:
+    - author: Robert Vojta
+- commits:
+    - footers:
+        signed-off-by: Robert Vojta <robert@balena.io>
+- commits:
+    - subject: Remove local push related info
+- commits:
+    - body: Replaced with simple `balena push $IP -s .`
+- commits:
+    - hash: 22e36495c75b0695519c26dca96d705c7a22495d
+- commits:
+    - author: Robert Vojta
+- commits:
+    - footers:
+        signed-off-by: Robert Vojta <robert@balena.io>
+- commits:
+    - subject: Add Zahari to authors
+- commits:
+    - body: null
+- commits:
+    - hash: af2b87cab9b79b3904e40dbb5e7136a12be945f6
+- commits:
+    - author: Robert Vojta
+- commits:
+    - footers:
+        signed-off-by: Robert Vojta <robert@balena.io>
+- commits:
+    - subject: Switch to Rust stable
+- commits:
+    - body: null
+- commits:
+    - hash: 6dac27ff8e259a9ffb00e9b4f10db4bd0a43a6d1
+- commits:
+    - author: Robert Vojta
+- commits:
+    - footers:
+        signed-off-by: Robert Vojta <robert@balena.io>
+- commits:
+    - subject: Rust 2018 edition
+- commits:
+    - body: null
+- commits:
+    - hash: ea29a8956137e85cd86a0deae7b7b23e4ad394d2
+- commits:
+    - author: Robert Vojta
+- commits:
+    - footers:
+        signed-off-by: Robert Vojta <robert@balena.io>
+- commits:
+    - subject: Ignore IDEA files
+- commits:
+    - body: null
+- commits:
+    - hash: c8d3e64a75d27e5071a72cdcd4a6ad48748bca04
+- commits:
+    - author: Robert Vojta
+- commits:
+    - footers:
+        signed-off-by: Robert Vojta <robert@balena.io>
+- commits:
+    - subject: Remove modify-uname
+- commits:
+    - body: null
+- commits:
+    - hash: d10f608cbf756899f5d5e398965e5d8520b1f94f
+- commits:
+    - author: Robert Vojta
+- commits:
+    - footers:
+        signed-off-by: Robert Vojta <robert@balena.io>
+- commits:
+    - subject: Add generated note
+- commits:
+    - body: This is added automatically since Rust 1.34.0
+- commits:
+    - hash: c292ba2f287f6bf80eac1bda688a6f7cb7b6365d
+- commits:
+    - author: Robert Vojta
+- commits:
+    - footers:
+        signed-off-by: Robert Vojta <robert@balena.io>
+- commits:
+    - subject: Add infinite loop
+- commits:
+    - body: null
+- commits:
+    - hash: 8789a007ef396cf5c511a02fe0565d8a3c8a23f8
+- commits:
+    - author: Robert Vojta
+- commits:
+    - footers:
+        signed-off-by: Robert Vojta <robert@balena.io>
+- commits:
+    - subject: Add docs links & polish
+- commits:
+    - body: null
+- commits:
+    - hash: 524af7cee84bbba53597d03b29bf65480709e233
+- commits:
+    - author: Robert Vojta
+- commits:
+    - footers:
+        signed-off-by: Robert Vojta <robert@balena.io>
+- commits:
+    - subject: Add note about dash in a binary name
+- commits:
+    - body: null
+- commits:
+    - hash: 7bd8608a69eb15a8112386da33cc5cfff2c706f8
+- commits:
+    - author: Robert Vojta
+- commits:
+    - footers:
+        signed-off-by: Robert Vojta <robert@balena.io>
+- commits:
+    - subject: Remove rust-toolchain file
+- commits:
+    - body: null
+- commits:
+    - hash: e48fccc19c1ebe4853175c34c9a80174329f45dc
+- commits:
+    - author: Robert Vojta
+- commits:
+    - footers:
+        signed-off-by: Robert Vojta <robert@balena.io>
+- commits:
+    - subject: Add sleep to infinite loop
+- commits:
+    - body: null
+- commits:
+    - hash: fd9774d259320b8d7393da0846f665513241df68
+- commits:
+    - author: Robert Vojta
+- commits:
+    - footers:
+        signed-off-by: Robert Vojta <robert@balena.io>
+- commits:
+    - subject: Remove rust-toolchain info
+- commits:
+    - body: It was removed, because of our CI (fixed Rust version).
+- version: 0.1.2
+- date: 2018-11-07T13:24:40Z
+- commits:
+    - hash: 04fd8d402af962688e41d144d83baca53f060aec
+- commits:
+    - author: nazrhom
+- commits:
+    - footers:
+        change-type: patch
+- commits:
+    - footers:
+        signed-off-by: Giovanni Garufi <giovanni@resin.io>
+- commits:
+    - subject: repo.yml
+- commits:
+    - body: |-
+        Add repo.yml which specifies rust project type, versionist.conf.js is
+        not needed as it will automatically be created based on the project
+        type.
+        Also removed package-lock.json which was a leftover from the versioning
+        process that should not reappear.
+- version: 0.1.1
+- date: 2018-11-02T14:45:11Z
+- commits:
+    - hash: 53a2e4ef1b658f6daa33f4e176af75ec04f00c3a
+- commits:
+    - author: Cyryl Płotnicki
+- commits:
+    - footers:
+        change-type: patch
+- commits:
+    - subject: Use pinned stable version of Rust
+- commits:
+    - body: To avoid confusion if we need the nightly for anything, which we don't.
+- version: 0.1.0
+- date: 2018-11-02T12:23:48Z
+- commits:
+    - hash: 41418c5fac6e2c9b1f8cddf84a4b0b998c7f779d
+- commits:
+    - author: Cyryl Płotnicki
+- commits:
+    - footers:
+        change-type: patch
+- commits:
+    - subject: Update transient dependencies
+- commits:
+    - body: null
+- commits:
+    - hash: 514ff2063a8dcdd8d651b0a8c3cc0aafbad47232
+- commits:
+    - author: Cyryl Płotnicki
+- commits:
+    - footers:
+        change-type: minor
+- commits:
+    - subject: Use standard `rust-toolchain` file to specify rust version to use
+- commits:
+    - body: null
+- commits:
+    - hash: ea17884ce7f5fa950c267e1777ea73891eaa0f63
+- commits:
+    - author: Cyryl Płotnicki
+- commits:
+    - subject: Add general description in the readme
+- commits:
+    - body: null
+- commits:
+    - hash: 295e1ee022b886eccfffea8f239a903a58e94523
+- commits:
+    - author: Cyryl Płotnicki
+- commits:
+    - footers:
+        change-type: minor
+- commits:
+    - subject: Add required versionist configuration
+- commits:
+    - body: null
+- commits:
+    - hash: e8e1ed1ef87414e34af1a9f2792e28a6c04fa24c
+- commits:
+    - author: Cyryl Płotnicki
+- commits:
+    - footers:
+        change-type: patch
+- commits:
+    - subject: Add empty changelog to comply with Versionist requirements
+- commits:
+    - body: null
+- commits:
+    - hash: 3c1f8080131402b99fb12ed827ecca73b3a616ed
+- commits:
+    - author: Zahari Petkov
+- commits:
+    - footers:
+        signed-off-by: Zahari Petkov <zahari@balena.io>
+- commits:
+    - subject: Single Dockerfile.template
+- commits:
+    - body: null
+- commits:
+    - hash: 9a9e2efbe80eaf2f581b50d65cd864371c503bc3
+- commits:
+    - author: Cyryl Płotnicki
+- commits:
+    - subject: Update base Rust version
+- commits:
+    - body: null
+- commits:
+    - hash: be27f6797dcbf22234bd29bfd206c7c390dca7d6
+- commits:
+    - author: Cyryl Płotnicki
+- commits:
+    - subject: Remove ARM-specific build instructions
+- commits:
+    - body: null
+- commits:
+    - hash: 3dce0dcd21fbc440da5d50fccdabcc35a781e0a4
+- commits:
+    - author: Cyryl Płotnicki
+- commits:
+    - subject: Add armv7hf-specific Dockerfile
+- commits:
+    - body: null
+- commits:
+    - hash: a88b3da9835d39c14c7f4affe2756e692e262a49
+- commits:
+    - author: Cyryl Płotnicki
+- commits:
+    - subject: Add rpi-specific Dockerfile
+- commits:
+    - body: null
+- commits:
+    - hash: 96800073f351b6cbe2872fbd98e4943bb449f638
+- commits:
+    - author: Cyryl Płotnicki
+- commits:
+    - subject: Make sure all Dockerfiles refer to the same Rust version
+- commits:
+    - body: null
+- commits:
+    - hash: 853894e83a46f310e327ae8430ff94b8c94af4e1
+- commits:
+    - author: Zrzka
+- commits:
+    - subject: Add editor configuration
+- commits:
+    - body: null
+- commits:
+    - hash: 4a01a8c3fd582105363fdddd8ed2d465f75d2a39
+- commits:
+    - author: Zrzka
+- commits:
+    - subject: Remove resin-sync.yml (no longer required)
+- commits:
+    - body: null
+- commits:
+    - hash: c65fd37dbf96bcd07d83fcc193a8f8e79cc99526
+- commits:
+    - author: Zrzka
+- commits:
+    - subject: Bump version to 0.2.0 and add clap
+- commits:
+    - body: null
+- commits:
+    - hash: 81d30f8779c473c1e1bd2f0aaafebdffbe79d68d
+- commits:
+    - author: Zrzka
+- commits:
+    - subject: Update
+- commits:
+    - body: null
+- commits:
+    - hash: 05bfb16e7ef32e69116652697d03d01da12347d2
+- commits:
+    - author: Zrzka
+- commits:
+    - subject: Treat Dockerfile.template as dockerfile
+- commits:
+    - body: null
+- commits:
+    - hash: 075736e2d3ffefcd6bd004c18218a3c92b368943
+- commits:
+    - author: Zrzka
+- commits:
+    - subject: Add NAME CLI argument
+- commits:
+    - body: null
+- commits:
+    - hash: af32ce316b1e7011ddfe2a53922d2fcbea9ffb90
+- commits:
+    - author: Zrzka
+- commits:
+    - subject: Add caching support
+- commits:
+    - body: null
+- commits:
+    - hash: 229adeb6112222238b8dd8b640ce3bafb364e2bc
+- commits:
+    - author: Zrzka
+- commits:
+    - subject: Add local-push script with default configuration
+- commits:
+    - body: null
+- commits:
+    - hash: a2030524fdf8afdfb3421561f8060cb35a1869c6
+- commits:
+    - author: Zrzka
+- commits:
+    - subject: Update documentation
+- commits:
+    - body: null
+- commits:
+    - hash: a64c2fb0c5f5be7e09cc4f1b8fcb2adac3c23061
+- commits:
+    - author: Zrzka
+- commits:
+    - subject: Move apt-get -q update to rust image and remove cleanup
+- commits:
+    - body: null
+- commits:
+    - hash: 80dc813db0feb105b38b8077b42051385307ccee
+- commits:
+    - author: Zrzka
+- commits:
+    - subject: Use /bin/sh and . instead of source
+- commits:
+    - body: null
+- commits:
+    - hash: 49ea504b387d877ff8e3b94ee2fb3204bfc8f423
+- commits:
+    - author: Zrzka
+- commits:
+    - subject: Fix typo
+- commits:
+    - body: null
+- commits:
+    - hash: 2bd1338a9214a26331d83758152352ddd433aebb
+- commits:
+    - author: Zrzka
+- commits:
+    - subject: Add local-push.env
+- commits:
+    - body: null
+- commits:
+    - hash: 9c09ea696a9293abf86a037729bf847bb3759ca5
+- commits:
+    - author: Zrzka
+- commits:
+    - subject: Fix typo and local-push.env docs
+- commits:
+    - body: null
+- commits:
+    - hash: 85860cdd6c4160bace4d806ce9325e2ea1ab7285
+- commits:
+    - author: Zrzka
+- commits:
+    - subject: Remove local-push.env
+- commits:
+    - body: null
