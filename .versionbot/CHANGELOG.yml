@@ -1,4 +1,28 @@
 - commits:
+    - subject: Fix clippy errors
+      hash: 66fb14998784ba62b144b1ea92efa6d6fb993d35
+      body: ""
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: 20k-ultra <3946250+20k-ultra@users.noreply.github.com>
+        signed-off-by: 20k-ultra <3946250+20k-ultra@users.noreply.github.com>
+      author: 20k-ultra
+      nested: []
+    - subject: Updated cargo dependencies
+      hash: 62cc1b5718cc73adbc2f317b5dd5a6246e2e747e
+      body: ""
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: 20k-ultra <3946250+20k-ultra@users.noreply.github.com>
+        signed-off-by: 20k-ultra <3946250+20k-ultra@users.noreply.github.com>
+      author: 20k-ultra
+      nested: []
+  version: 1.0.3
+  title: ""
+  date: 2023-02-01T03:16:06.192Z
+- commits:
     - subject: "patch: replace balenaCI with flowzone"
       hash: 141d610a871cde215256c4f0453c1e9808ceddb9
       body: ""
