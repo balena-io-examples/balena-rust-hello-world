@@ -1,5 +1,5 @@
 # Rust as the base image
-FROM rust:1.65-slim-buster as builder
+FROM rust:1.65-slim as builder
 
 # 1. Create a new empty shell project
 RUN USER=root cargo new --bin balena-rust-hello-world
@@ -20,7 +20,7 @@ RUN touch -a -m ./src/main.rs
 RUN cargo build --release --target-dir .
 
 # 6. Chain builds for optimization
-FROM balenalib/%%BALENA_MACHINE_NAME%%-debian:buster-run
+FROM balenalib/%%BALENA_ARCH%%-debian:latest-run
 
 WORKDIR /usr/src/balena-rust-hello-world
 
