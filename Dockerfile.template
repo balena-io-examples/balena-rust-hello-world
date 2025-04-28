@@ -20,7 +20,7 @@ RUN touch -a -m ./src/main.rs
 RUN cargo build --release --target-dir .
 
 # 6. Chain builds for optimization
-FROM balenalib/%%BALENA_ARCH%%-debian:latest-run
+FROM debian:bookworm-slim
 
 WORKDIR /usr/src/balena-rust-hello-world
 
