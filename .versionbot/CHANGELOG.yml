@@ -1,4 +1,16 @@
 - commits:
+    - subject: "patch: Replace base image with Docker Official base image"
+      hash: 4fd53140f026c382d821b6722f48c4059ed1b1c5
+      body: ""
+      footer:
+        Signed-off-by: Vipul Gupta (@vipulgupta2048) <vipulgupta2048@gmail.com>
+        signed-off-by: Vipul Gupta (@vipulgupta2048) <vipulgupta2048@gmail.com>
+      author: Vipul Gupta (@vipulgupta2048)
+      nested: []
+  version: 1.0.6
+  title: ""
+  date: 2025-04-28T17:19:02.914Z
+- commits:
     - subject: "patch: Update base image"
       hash: 2221bbbb563b3eb20c6ba685d1610931ac08a2e0
       body: ""
