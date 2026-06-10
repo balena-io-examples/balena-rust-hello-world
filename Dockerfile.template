@@ -1,5 +1,5 @@
 # Rust as the base image
-FROM rust:1.65-slim as builder
+FROM rust:1.86-slim as builder
 
 # 1. Create a new empty shell project
 RUN USER=root cargo new --bin balena-rust-hello-world
