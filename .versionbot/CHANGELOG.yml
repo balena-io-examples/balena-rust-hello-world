@@ -1,4 +1,18 @@
 - commits:
+    - subject: Update rust docker tag to v1.86
+      hash: bb31081d1d29c3277e47c47447ad08a2b2cdcdef
+      body: >
+        Update Rust base image from v1.65 to v1.86 to fix Cargo 2024 edition
+        error
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: guille-vega
+      nested: []
+  version: 1.0.7
+  title: ""
+  date: 2026-06-10T19:44:46.696Z
+- commits:
     - subject: "patch: Replace base image with Docker Official base image"
       hash: 4fd53140f026c382d821b6722f48c4059ed1b1c5
       body: ""
